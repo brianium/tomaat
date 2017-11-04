@@ -1,0 +1,28 @@
+(ns ui.core
+  (:require [reagent.core :as reagent]
+            [ui.config :refer [config-screen]]
+            [ui.main :refer [main-screen]]))
+
+(enable-console-print!)
+
+(defonce *state
+  (reagent/atom {:flipped? false}))
+
+(defn toggle-screen [e]
+  (let [flipped? (:flipped? @*state)]
+    (.preventDefault e)
+    (if flipped?
+      (swap! *state assoc :flipped? false)
+      (swap! *state assoc :flipped? true))))
+
+(defn tomaat []
+  (let [state    @*state
+        flipped? (:flipped? state)]
+    [:div.container
+     [:div {:class (str "screen" (when flipped? " screen--flipped"))}
+      [main-screen {:on-toggle toggle-screen}]
+      [config-screen {:on-toggle toggle-screen}]]]))
+
+(reagent/render
+  [tomaat]
+  (.-body js/document))

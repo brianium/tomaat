@@ -1,0 +1,19 @@
+(ns ui.main)
+
+(defn header []
+  [:header.header
+   [:h1.header__text "Tomaat!"]])
+
+(defn timer []
+  [:div.timer "25:00"])
+
+(defn button []
+  [:button.button {:type "button"} "Start Pomodoro"])
+
+(defn main-screen [{:keys [on-toggle]}]
+  [:div.screen__main.screen__state
+   [header]
+   [timer]
+   [button]
+   [:button.link {:type     "button"
+                  :on-click on-toggle} "settings"]])

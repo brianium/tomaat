@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@cljs-oss/module-deps": "^1.1.1",
+    "electron": "^1.7.9",
+    "ws": "^3.2.0"
+  }
+}

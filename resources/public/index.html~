@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>It's Tomaat!</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <script src="js/ui.js"></script>
+  </body>
+</html>
