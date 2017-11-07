@@ -1,1 +1,2 @@
-electron: env LEIN_FAST_TRAMPOLINE=y lein trampoline cljsbuild auto electron ui-dev worker-dev
+electron: env LEIN_FAST_TRAMPOLINE=y lein trampoline cljsbuild auto electron worker-dev
+figwheel: lein figwheel ui-dev

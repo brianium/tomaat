@@ -22251,27 +22251,36 @@ cljs.nodejs.enable_util_print_BANG_ = function() {
   }();
   return null;
 };
-var electron = {core:{}};
-electron.core.node$module$electron = require("electron");
+var main = {core:{}};
+main.core.node$module$electron = require("electron");
 cljs.nodejs.enable_util_print_BANG_.call(null);
-electron.core._STAR_main_window = cljs.core.atom.call(null, null);
-electron.core.create_window = function() {
+main.core._STAR_main_window = cljs.core.atom.call(null, null);
+main.core.create_window = function() {
   cljs.core.println.call(null, "Creating window");
-  cljs.core.reset_BANG_.call(null, electron.core._STAR_main_window, new electron.core.node$module$electron.BrowserWindow({width:300, height:500, resizable:!1}));
-  cljs.core.deref.call(null, electron.core._STAR_main_window).loadURL(["file://", cljs.core.str.cljs$core$IFn$_invoke$arity$1(__dirname), "/public/index.html"].join(""));
-  return cljs.core.deref.call(null, electron.core._STAR_main_window).on("closed", function() {
-    return cljs.core.reset_BANG_.call(null, electron.core._STAR_main_window, null);
+  cljs.core.reset_BANG_.call(null, main.core._STAR_main_window, new main.core.node$module$electron.BrowserWindow({width:300, height:500, resizable:!1}));
+  cljs.core.deref.call(null, main.core._STAR_main_window).loadURL(["file://", cljs.core.str.cljs$core$IFn$_invoke$arity$1(__dirname), "/public/index.html"].join(""));
+  return cljs.core.deref.call(null, main.core._STAR_main_window).on("closed", function() {
+    return cljs.core.reset_BANG_.call(null, main.core._STAR_main_window, null);
   });
 };
-electron.core.node$module$electron.app.on("ready", electron.core.create_window);
-electron.core.quit_app = function() {
-  return cljs.core._EQ_.call(null, "darwin", process.platform) ? null : electron.core.node$module$electron.app.quit();
+main.core.node$module$electron.app.on("ready", main.core.create_window);
+main.core.quit_app = function() {
+  return cljs.core._EQ_.call(null, "darwin", process.platform) ? null : main.core.node$module$electron.app.quit();
 };
-electron.core.node$module$electron.app.on("window-all-closed", electron.core.quit_app);
-electron.core.activate = function() {
-  return null == cljs.core.deref.call(null, electron.core._STAR_main_window) ? electron.core.create_window.call(null) : null;
+main.core.node$module$electron.app.on("window-all-closed", main.core.quit_app);
+main.core.activate = function() {
+  return null == cljs.core.deref.call(null, main.core._STAR_main_window) ? main.core.create_window.call(null) : null;
 };
-electron.core.node$module$electron.app.on("activate", electron.core.activate);
+main.core.node$module$electron.app.on("activate", main.core.activate);
+var worker = {electron:{}};
+worker.electron.node$module$electron = require("electron");
+worker.electron.BrowserWindow = worker.electron.node$module$electron.remote.BrowserWindow;
+worker.electron.web_contents = function(a) {
+  return worker.electron.BrowserWindow.fromId(a).webContents;
+};
+worker.electron.on = function(a, b) {
+  return worker.electron.node$module$electron.ipcRenderer.on(a, b);
+};
 cljs.nodejscli = {};
 COMPILED && (goog.global = global);
 cljs.core.fn_QMARK_.call(null, cljs.core._STAR_main_cli_fn_STAR_) && cljs.core.apply.call(null, cljs.core._STAR_main_cli_fn_STAR_, cljs.core.drop.call(null, 2, process.argv));

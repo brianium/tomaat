@@ -21,11 +21,11 @@ return JSON.stringify(data__$1);
 });
 data.core.read = (function data$core$read(){
 try{return cljs.core.js__GT_clj.call(null,data.core.json_parse.call(null,data.core.node$module$fs.readFileSync.call(null,data.core.db_path.call(null))),new cljs.core.Keyword(null,"keywordize-keys","keywordize-keys",1310784252),true);
-}catch (e16658){if((e16658 instanceof Object)){
-var e = e16658;
+}catch (e19733){if((e19733 instanceof Object)){
+var e = e19733;
 return cljs.core.PersistentArrayMap.EMPTY;
 } else {
-throw e16658;
+throw e19733;
 
 }
 }});

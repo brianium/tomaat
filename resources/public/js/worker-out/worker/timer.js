@@ -1,7 +1,7 @@
 // Compiled by ClojureScript 1.9.908 {:target :nodejs}
 goog.provide('worker.timer');
 goog.require('cljs.core');
-goog.require('worker.electron');
+goog.require('worker.util');
 if(typeof worker.timer._STAR_time !== 'undefined'){
 } else {
 worker.timer._STAR_time = cljs.core.atom.call(null,(1500));
@@ -26,10 +26,10 @@ worker.timer.time_changed = (function worker$timer$time_changed(contents,time){
 return contents.send("time-changed",cljs.core.clj__GT_js.call(null,worker.timer.minutes_and_seconds.call(null,time)));
 });
 worker.timer.start = (function worker$timer$start(event,id){
-var contents = worker.electron.web_contents.call(null,id);
+var contents = worker.util.web_contents.call(null,id);
 cljs.core.add_watch.call(null,worker.timer._STAR_time,new cljs.core.Keyword(null,"time-changed","time-changed",-1355380253),((function (contents){
-return (function (p1__14012_SHARP_,p2__14013_SHARP_,p3__14014_SHARP_,p4__14011_SHARP_){
-return worker.timer.time_changed.call(null,contents,p4__14011_SHARP_);
+return (function (p1__19739_SHARP_,p2__19740_SHARP_,p3__19741_SHARP_,p4__19738_SHARP_){
+return worker.timer.time_changed.call(null,contents,p4__19738_SHARP_);
 });})(contents))
 );
 
@@ -40,7 +40,7 @@ return worker.timer.tick.call(null,worker.timer._STAR_time);
 ,(1000)));
 });
 worker.timer.stop = (function worker$timer$stop(event,id){
-var contents = worker.electron.web_contents.call(null,id);
+var contents = worker.util.web_contents.call(null,id);
 clearInterval(cljs.core.deref.call(null,worker.timer._STAR_interval));
 
 cljs.core.reset_BANG_.call(null,worker.timer._STAR_interval,null);

@@ -1,5 +1,5 @@
 (ns worker.timer
-  (:require [worker.electron :refer [web-contents]]))
+  (:require [worker.util :refer [web-contents]]))
 
 (defonce *time (atom 1500))
 (defonce *interval (atom nil))

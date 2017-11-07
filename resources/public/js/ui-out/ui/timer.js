@@ -8,3 +8,5 @@ return ui.worker.message_BANG_.call(null,"start-timer");
 ui.timer.stop_timer = (function ui$timer$stop_timer(){
 return ui.worker.message_BANG_.call(null,"stop-timer");
 });
+
+//# sourceMappingURL=timer.js.map?rel=1510088587707

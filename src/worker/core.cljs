@@ -1,5 +1,5 @@
 (ns worker.core
-  (:require [worker.electron :refer [on]]
+  (:require [worker.util :refer [on]]
             [worker.timer :as timer]
             [worker.settings :as settings]
             [worker.slack :as slack]))

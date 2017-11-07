@@ -1,7 +1,9 @@
 {
   "dependencies": {
     "@cljs-oss/module-deps": "^1.1.1",
-    "electron": "^1.7.9",
-    "ws": "^3.2.0"
+    "create-react-class": "^15.6.2",
+    "electron": "^1.8.1",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2"
   }
 }
