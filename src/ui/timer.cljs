@@ -1,14 +1,8 @@
 (ns ui.timer
-  (:require [ui.worker :refer [send create-worker]]))
-
-(defonce *worker (atom nil))
-
-(defn send-start-timer
-  [worker]
-  (send worker "start-timer"))
+  (:require [ui.worker :as worker]))
 
 (defn start-timer []
-  (reset! *worker (create-worker send-start-timer)))
+  (worker/message! "start-timer"))
 
 (defn stop-timer []
-  (send @*worker "stop-timer"))
+  (worker/message! "stop-timer"))

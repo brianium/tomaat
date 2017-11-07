@@ -102,6 +102,10 @@ body {
     width: 100%;
 }
 
+.form__input:disabled {
+    background-color: #ddd;
+}
+
 .header {
     background: url('tomato.png') no-repeat top center / 60%;
     display: flex;

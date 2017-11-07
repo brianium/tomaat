@@ -1,0 +1,8 @@
+(ns worker.settings
+  (:require [data.core :as data]))
+
+(defn update-settings
+  [event settings]
+  (-> settings
+      (js->clj :keywordize-keys true)
+      data/write))

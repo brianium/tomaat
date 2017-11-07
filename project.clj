@@ -33,7 +33,7 @@
                                :npm-deps       {:electron "1.7.9"}}}
 
                {:id           "ui-dev"
-                :source-paths ["src/ui"]
+                :source-paths ["src/ui" "src/data"]
                 :compiler     {:main          ui.core
                                :output-to     "resources/public/js/ui.js"
                                :output-dir    "resources/public/js/ui-out"
@@ -45,7 +45,7 @@
                                :npm-deps      {:electron "1.7.9"}}}
 
                {:id           "worker-dev"
-                :source-paths ["src/worker"]
+                :source-paths ["src/worker" "src/data"]
                 :compiler     {:main          worker.core
                                :output-to     "resources/public/js/worker.js"
                                :output-dir    "resources/public/js/worker-out"
@@ -68,8 +68,7 @@
                                   [com.cemerick/piggieback "0.2.2"]]
                    ;; need to add dev source path here to get user.clj loaded
                    :source-paths ["src/tomaat" "dev"]
-                   :plugins      [[cider/cider-nrepl "0.15.1"]]
-                   :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
+                   :plugins      [[cider/cider-nrepl "0.15.1-SNAPSHOT"]]
 
                    :clean-targets ^{:protect false} ["resources/main.js"
                                                      "resources/public/js"

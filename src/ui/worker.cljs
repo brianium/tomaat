@@ -3,6 +3,9 @@
 
 (def BrowserWindow (.-BrowserWindow remote))
 
+;;; Maintain a single reference to a worker window
+(defonce *worker (atom nil))
+
 (defn current-window-id []
   (->> BrowserWindow
       .getFocusedWindow
@@ -35,3 +38,14 @@
         .-webContents
         .-send
         (apply args))))
+
+(defn message!
+  "Sends a message to the remote worker"
+  [event-name & rest]
+  (if (nil? @*worker)
+    (reset!
+      *worker
+      (create-worker
+        (fn [worker]
+          (apply send worker event-name rest))))
+    (apply send @*worker event-name rest)))
