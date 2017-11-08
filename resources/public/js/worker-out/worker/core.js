@@ -10,3 +10,5 @@ worker.core.stop = cljs.core.juxt.call(null,worker.timer.stop,worker.slack.stop_
 worker.util.on.call(null,"start-timer",worker.core.start);
 worker.util.on.call(null,"stop-timer",worker.core.stop);
 worker.util.on.call(null,"update-settings",worker.settings.update_settings);
+
+//# sourceMappingURL=core.js.map?rel=1510147248132

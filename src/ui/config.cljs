@@ -1,4 +1,5 @@
 (ns ui.config
+  "The config screen shows settings for Tomaat"
   (:require [goog.string :as gstring]))
 
 (defn form [{:keys [disabled? update token slack-me]}]

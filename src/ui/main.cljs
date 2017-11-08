@@ -1,4 +1,5 @@
 (ns ui.main
+  "Houses the main screen of Tomaat - that is the timer screen"
   (:require [goog.string :as gstring]
             goog.string.format))
 

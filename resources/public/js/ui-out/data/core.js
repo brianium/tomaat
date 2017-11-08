@@ -21,11 +21,11 @@ return JSON.stringify(data__$1);
 });
 data.core.read = (function data$core$read(){
 try{return cljs.core.js__GT_clj.call(null,data.core.json_parse.call(null,data.core.node$module$fs.readFileSync.call(null,data.core.db_path.call(null))),new cljs.core.Keyword(null,"keywordize-keys","keywordize-keys",1310784252),true);
-}catch (e32771){if((e32771 instanceof Object)){
-var e = e32771;
+}catch (e39479){if((e39479 instanceof Object)){
+var e = e39479;
 return cljs.core.PersistentArrayMap.EMPTY;
 } else {
-throw e32771;
+throw e39479;
 
 }
 }});
@@ -36,4 +36,4 @@ data.core.write = (function data$core$write(data__$1){
 return data.core.write_file_sync.call(null,data.core.json_stringify.call(null,cljs.core.clj__GT_js.call(null,cljs.core.merge.call(null,data.core.read.call(null),data__$1))),data.core.db_path.call(null));
 });
 
-//# sourceMappingURL=core.js.map?rel=1510085331499
+//# sourceMappingURL=core.js.map?rel=1510143307042

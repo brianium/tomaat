@@ -1,4 +1,5 @@
 (ns ui.core
+  "Houses application state and defines actions and the main application component"
   (:require [reagent.core :as reagent]
             [data.core :as data]
             [ui.worker :as worker]
@@ -16,7 +17,9 @@
                  :data {}}))
 
 ;;; Actions
-(defn toggle-screen [e]
+(defn toggle-screen
+  "Changes the focused screen between the main and config screen"
+  [e]
   (let [flipped? (:flipped? @*state)]
     (.preventDefault e)
     (if flipped?
@@ -36,7 +39,9 @@
   (swap! *state assoc-in [:data k] v)
   (settings/update-setting k v))
 
+;;; Updates state based on messages from the worker process
 (worker/on "time-changed" #(swap! *state assoc :time (js->clj %2)))
+(worker/on "timer-complete" #(swap! *state assoc :started? false))
 
 ;;; Application Component
 (defn tomaat []

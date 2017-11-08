@@ -7,7 +7,6 @@
 (def *main-window (atom nil))
 
 (defn create-window []
-  (println "Creating window")
   (reset! *main-window (BrowserWindow. #js {:width          300
                                             :height         500
                                             :resizable      false}))

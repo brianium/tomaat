@@ -11,6 +11,11 @@ ui.worker._STAR_worker = cljs.core.atom.call(null,null);
 ui.worker.current_window_id = (function ui$worker$current_window_id(){
 return ui.worker.BrowserWindow.getFocusedWindow().id;
 });
+/**
+ * We want a boss development environment. :asset-path settings
+ *   jack with live reloading, so this function will help us determine
+ *   the url of the worker document based on environment
+ */
 ui.worker.worker_url = (function ui$worker$worker_url(){
 return ["file://",cljs.core.str.cljs$core$IFn$_invoke$arity$1(ui.worker.node$module$path.resolve.call(null,ui.worker.node$module$path.join.call(null,__dirname,"../../../","worker.html")))].join('');
 });
@@ -20,14 +25,14 @@ return ["file://",cljs.core.str.cljs$core$IFn$_invoke$arity$1(ui.worker.node$mod
  */
 ui.worker.create_worker = (function ui$worker$create_worker(var_args){
 var args__31356__auto__ = [];
-var len__31349__auto___40483 = arguments.length;
-var i__31350__auto___40484 = (0);
+var len__31349__auto___54455 = arguments.length;
+var i__31350__auto___54456 = (0);
 while(true){
-if((i__31350__auto___40484 < len__31349__auto___40483)){
-args__31356__auto__.push((arguments[i__31350__auto___40484]));
+if((i__31350__auto___54456 < len__31349__auto___54455)){
+args__31356__auto__.push((arguments[i__31350__auto___54456]));
 
-var G__40485 = (i__31350__auto___40484 + (1));
-i__31350__auto___40484 = G__40485;
+var G__54457 = (i__31350__auto___54456 + (1));
+i__31350__auto___54456 = G__54457;
 continue;
 } else {
 }
@@ -40,25 +45,25 @@ return ui.worker.create_worker.cljs$core$IFn$_invoke$arity$variadic((arguments[(
 
 ui.worker.create_worker.cljs$core$IFn$_invoke$arity$variadic = (function (on_load,rest){
 var path = ui.worker.worker_url.call(null);
-var worker = (new ui.worker.BrowserWindow(({"width": (400), "height": (400), "show": false})));
-var args = cljs.core.concat.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [worker], null),rest);
-worker.loadURL(path);
+var worker__$1 = (new ui.worker.BrowserWindow(({"width": (400), "height": (400), "show": false})));
+var args = cljs.core.concat.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [worker__$1], null),rest);
+worker__$1.loadURL(path);
 
-worker.webContents.on("did-finish-load",((function (path,worker,args){
+worker__$1.webContents.on("did-finish-load",((function (path,worker__$1,args){
 return (function (){
 return cljs.core.apply.call(null,on_load,args);
-});})(path,worker,args))
+});})(path,worker__$1,args))
 );
 
-return worker;
+return worker__$1;
 });
 
 ui.worker.create_worker.cljs$lang$maxFixedArity = (1);
 
-ui.worker.create_worker.cljs$lang$applyTo = (function (seq40481){
-var G__40482 = cljs.core.first.call(null,seq40481);
-var seq40481__$1 = cljs.core.next.call(null,seq40481);
-return ui.worker.create_worker.cljs$core$IFn$_invoke$arity$variadic(G__40482,seq40481__$1);
+ui.worker.create_worker.cljs$lang$applyTo = (function (seq54453){
+var G__54454 = cljs.core.first.call(null,seq54453);
+var seq54453__$1 = cljs.core.next.call(null,seq54453);
+return ui.worker.create_worker.cljs$core$IFn$_invoke$arity$variadic(G__54454,seq54453__$1);
 });
 
 /**
@@ -72,14 +77,14 @@ return ui.worker.node$module$electron.ipcRenderer.on(event_name,handler);
  */
 ui.worker.send = (function ui$worker$send(var_args){
 var args__31356__auto__ = [];
-var len__31349__auto___40489 = arguments.length;
-var i__31350__auto___40490 = (0);
+var len__31349__auto___54461 = arguments.length;
+var i__31350__auto___54462 = (0);
 while(true){
-if((i__31350__auto___40490 < len__31349__auto___40489)){
-args__31356__auto__.push((arguments[i__31350__auto___40490]));
+if((i__31350__auto___54462 < len__31349__auto___54461)){
+args__31356__auto__.push((arguments[i__31350__auto___54462]));
 
-var G__40491 = (i__31350__auto___40490 + (1));
-i__31350__auto___40490 = G__40491;
+var G__54463 = (i__31350__auto___54462 + (1));
+i__31350__auto___54462 = G__54463;
 continue;
 } else {
 }
@@ -90,35 +95,36 @@ var argseq__31357__auto__ = ((((2) < args__31356__auto__.length))?(new cljs.core
 return ui.worker.send.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),(arguments[(1)]),argseq__31357__auto__);
 });
 
-ui.worker.send.cljs$core$IFn$_invoke$arity$variadic = (function (worker,event_name,rest){
+ui.worker.send.cljs$core$IFn$_invoke$arity$variadic = (function (worker__$1,event_name,rest){
 var id = ui.worker.current_window_id.call(null);
 var args = cljs.core.concat.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [event_name,id], null),rest);
-return cljs.core.apply.call(null,worker.webContents.send,args);
+return cljs.core.apply.call(null,worker__$1.webContents.send,args);
 });
 
 ui.worker.send.cljs$lang$maxFixedArity = (2);
 
-ui.worker.send.cljs$lang$applyTo = (function (seq40486){
-var G__40487 = cljs.core.first.call(null,seq40486);
-var seq40486__$1 = cljs.core.next.call(null,seq40486);
-var G__40488 = cljs.core.first.call(null,seq40486__$1);
-var seq40486__$2 = cljs.core.next.call(null,seq40486__$1);
-return ui.worker.send.cljs$core$IFn$_invoke$arity$variadic(G__40487,G__40488,seq40486__$2);
+ui.worker.send.cljs$lang$applyTo = (function (seq54458){
+var G__54459 = cljs.core.first.call(null,seq54458);
+var seq54458__$1 = cljs.core.next.call(null,seq54458);
+var G__54460 = cljs.core.first.call(null,seq54458__$1);
+var seq54458__$2 = cljs.core.next.call(null,seq54458__$1);
+return ui.worker.send.cljs$core$IFn$_invoke$arity$variadic(G__54459,G__54460,seq54458__$2);
 });
 
 /**
- * Sends a message to the remote worker
+ * Sends a message to the remote worker. This function calls the send function - but
+ *   it manages the *worker atom - creating it if it does not exist, otherwise reusing it
  */
 ui.worker.message_BANG_ = (function ui$worker$message_BANG_(var_args){
 var args__31356__auto__ = [];
-var len__31349__auto___40494 = arguments.length;
-var i__31350__auto___40495 = (0);
+var len__31349__auto___54466 = arguments.length;
+var i__31350__auto___54467 = (0);
 while(true){
-if((i__31350__auto___40495 < len__31349__auto___40494)){
-args__31356__auto__.push((arguments[i__31350__auto___40495]));
+if((i__31350__auto___54467 < len__31349__auto___54466)){
+args__31356__auto__.push((arguments[i__31350__auto___54467]));
 
-var G__40496 = (i__31350__auto___40495 + (1));
-i__31350__auto___40495 = G__40496;
+var G__54468 = (i__31350__auto___54467 + (1));
+i__31350__auto___54467 = G__54468;
 continue;
 } else {
 }
@@ -131,8 +137,8 @@ return ui.worker.message_BANG_.cljs$core$IFn$_invoke$arity$variadic((arguments[(
 
 ui.worker.message_BANG_.cljs$core$IFn$_invoke$arity$variadic = (function (event_name,rest){
 if((cljs.core.deref.call(null,ui.worker._STAR_worker) == null)){
-return cljs.core.reset_BANG_.call(null,ui.worker._STAR_worker,ui.worker.create_worker.call(null,(function (worker){
-return cljs.core.apply.call(null,ui.worker.send,worker,event_name,rest);
+return cljs.core.reset_BANG_.call(null,ui.worker._STAR_worker,ui.worker.create_worker.call(null,(function (worker__$1){
+return cljs.core.apply.call(null,ui.worker.send,worker__$1,event_name,rest);
 })));
 } else {
 return cljs.core.apply.call(null,ui.worker.send,cljs.core.deref.call(null,ui.worker._STAR_worker),event_name,rest);
@@ -141,11 +147,11 @@ return cljs.core.apply.call(null,ui.worker.send,cljs.core.deref.call(null,ui.wor
 
 ui.worker.message_BANG_.cljs$lang$maxFixedArity = (1);
 
-ui.worker.message_BANG_.cljs$lang$applyTo = (function (seq40492){
-var G__40493 = cljs.core.first.call(null,seq40492);
-var seq40492__$1 = cljs.core.next.call(null,seq40492);
-return ui.worker.message_BANG_.cljs$core$IFn$_invoke$arity$variadic(G__40493,seq40492__$1);
+ui.worker.message_BANG_.cljs$lang$applyTo = (function (seq54464){
+var G__54465 = cljs.core.first.call(null,seq54464);
+var seq54464__$1 = cljs.core.next.call(null,seq54464);
+return ui.worker.message_BANG_.cljs$core$IFn$_invoke$arity$variadic(G__54465,seq54464__$1);
 });
 
 
-//# sourceMappingURL=worker.js.map?rel=1510088587696
+//# sourceMappingURL=worker.js.map?rel=1510147377048

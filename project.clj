@@ -10,6 +10,7 @@
                  [org.clojure/clojurescript "1.9.908"]
                  [org.clojure/core.async  "0.3.443"]
                  [cljsjs/nodejs-externs "1.0.4-1"]
+                 [cljs-http "0.1.44"]
                  [reagent "0.8.0-alpha2"]]
 
   :plugins [[lein-cljsbuild "1.1.7" :exclusions [[org.clojure/clojure]]]
@@ -36,35 +37,37 @@
                {:id           "ui-dev"
                 :source-paths ["src/ui" "src/data"]
                 :figwheel     true
-                :compiler     {:main          ui.core
-                               :output-to     "resources/public/js/ui.js"
-                               :output-dir    "resources/public/js/ui-out"
-                               :optimizations :none
-                               :install-deps  true
-                               :hashbang      false
-                               :target        :nodejs
-                               :source-map    true
-                               :npm-deps      {:electron "1.8.1"
-                                               :react "15.6.2"
-                                               :react-dom "15.6.2"
-                                               :create-react-class "15.6.2"}}}
+                :compiler     {:main           ui.core
+                               :output-to      "resources/public/js/ui.js"
+                               :output-dir     "resources/public/js/ui-out"
+                               :optimizations  :none
+                               :install-deps   true
+                               :hashbang       false
+                               :target         :nodejs
+                               :parallel-build true
+                               :source-map     true
+                               :npm-deps       {:electron           "1.8.1"
+                                                :react              "15.6.2"
+                                                :react-dom          "15.6.2"
+                                                :create-react-class "15.6.2"}}}
 
                {:id           "worker-dev"
                 :source-paths ["src/worker" "src/data"]
-                :compiler     {:main          worker.core
-                               :output-to     "resources/public/js/worker.js"
-                               :output-dir    "resources/public/js/worker-out"
-                               :asset-path    "js/worker-out"
-                               :optimizations :simple
-                               :install-deps  true
-                               :hashbang      false
-                               :target        :nodejs
-                               :npm-deps      {:electron "1.8.1"}}}]}
+                :figwheel     true
+                :compiler     {:main           worker.core
+                               :output-to      "resources/public/js/worker.js"
+                               :output-dir     "resources/public/js/worker-out"
+                               :optimizations  :none
+                               :install-deps   true
+                               :hashbang       false
+                               :target         :nodejs
+                               :parallel-build true
+                               :npm-deps       {:electron "1.8.1"}}}]}
 
   :aliases {"electron" ["shell" "node_modules/.bin/electron" "resources/main.js"]}
 
-  :figwheel {:css-dirs ["resources/public/css"]
-             :nrepl-port 7888
+  :figwheel {:css-dirs         ["resources/public/css"]
+             :nrepl-port       7888
              :nrepl-middleware ["cider.nrepl/cider-middleware"
                                 "cemerick.piggieback/wrap-cljs-repl"]}
 

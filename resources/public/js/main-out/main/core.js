@@ -6,8 +6,6 @@ main.core.node$module$electron = require('electron');
 cljs.nodejs.enable_util_print_BANG_.call(null);
 main.core._STAR_main_window = cljs.core.atom.call(null,null);
 main.core.create_window = (function main$core$create_window(){
-cljs.core.println.call(null,"Creating window");
-
 cljs.core.reset_BANG_.call(null,main.core._STAR_main_window,(new main.core.node$module$electron.BrowserWindow(({"width": (300), "height": (500), "resizable": false}))));
 
 cljs.core.deref.call(null,main.core._STAR_main_window).loadURL(["file://",cljs.core.str.cljs$core$IFn$_invoke$arity$1(__dirname),"/public/index.html"].join(''));

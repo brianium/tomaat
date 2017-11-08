@@ -9,6 +9,11 @@ worker.util.BrowserWindow = worker.util.node$module$electron.remote.BrowserWindo
 worker.util.web_contents = (function worker$util$web_contents(id){
 return worker.util.BrowserWindow.fromId(id).webContents;
 });
+/**
+ * Register an event handler with the electron ipcRenderer
+ */
 worker.util.on = (function worker$util$on(event_name,handler){
 return worker.util.node$module$electron.ipcRenderer.on(event_name,handler);
 });
+
+//# sourceMappingURL=util.js.map?rel=1510146735782

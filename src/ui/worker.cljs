@@ -12,7 +12,11 @@
       .getFocusedWindow
       .-id))
 
-(defn worker-url []
+(defn worker-url
+  "We want a boss development environment. :asset-path settings
+  jack with live reloading, so this function will help us determine
+  the url of the worker document based on environment"
+  []
   (->> (path/join js/__dirname "../../../" "worker.html")
        (path/resolve)
        (str "file://")))
@@ -46,7 +50,8 @@
         (apply args))))
 
 (defn message!
-  "Sends a message to the remote worker"
+  "Sends a message to the remote worker. This function calls the send function - but
+  it manages the *worker atom - creating it if it does not exist, otherwise reusing it"
   [event-name & rest]
   (if (nil? @*worker)
     (reset!
