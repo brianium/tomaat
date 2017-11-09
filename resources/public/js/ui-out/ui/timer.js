@@ -15,4 +15,4 @@ ui.timer.stop_timer = (function ui$timer$stop_timer(){
 return ui.worker.message_BANG_.call(null,"stop-timer");
 });
 
-//# sourceMappingURL=timer.js.map?rel=1510147415311
+//# sourceMappingURL=timer.js.map?rel=1510229230875

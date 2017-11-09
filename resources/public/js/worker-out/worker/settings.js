@@ -9,4 +9,4 @@ worker.settings.update_settings = (function worker$settings$update_settings(even
 return data.core.write.call(null,cljs.core.js__GT_clj.call(null,settings,new cljs.core.Keyword(null,"keywordize-keys","keywordize-keys",1310784252),true));
 });
 
-//# sourceMappingURL=settings.js.map?rel=1510147247983
+//# sourceMappingURL=settings.js.map?rel=1510229222037

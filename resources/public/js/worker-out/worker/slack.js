@@ -46,8 +46,8 @@ return null;
  * Updates token user's profile with the given text and emoji
  */
 worker.slack.update_profile = (function worker$slack$update_profile(text,emoji){
-return worker.slack.with_token.call(null,(function (p1__54316_SHARP_){
-return worker.slack.request.call(null,"users.profile.set",new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"profile","profile",-545963874),worker.slack.encode_json.call(null,new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"status_text","status_text",1311012961),text,new cljs.core.Keyword(null,"status_emoji","status_emoji",-223752679),emoji], null)),new cljs.core.Keyword(null,"token","token",-1211463215),p1__54316_SHARP_], null));
+return worker.slack.with_token.call(null,(function (p1__43013_SHARP_){
+return worker.slack.request.call(null,"users.profile.set",new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"profile","profile",-545963874),worker.slack.encode_json.call(null,new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"status_text","status_text",1311012961),text,new cljs.core.Keyword(null,"status_emoji","status_emoji",-223752679),emoji], null)),new cljs.core.Keyword(null,"token","token",-1211463215),p1__43013_SHARP_], null));
 }));
 });
 /**
@@ -60,8 +60,8 @@ return worker.slack.update_profile.call(null,"pom party",":tomato:");
  * Stopping the pomodoro clears the user profile of any pom related business
  */
 worker.slack.stop_pomodoro = (function worker$slack$stop_pomodoro(var_args){
-var G__54318 = arguments.length;
-switch (G__54318) {
+var G__43031 = arguments.length;
+switch (G__43031) {
 case 0:
 return worker.slack.stop_pomodoro.cljs$core$IFn$_invoke$arity$0();
 
@@ -94,111 +94,111 @@ worker.slack.notify = (function worker$slack$notify(){
 return worker.slack.with_token.call(null,(function (token){
 console.log(token);
 
-var c__33728__auto__ = cljs.core.async.chan.call(null,(1));
-cljs.core.async.impl.dispatch.run.call(null,((function (c__33728__auto__){
+var c__33665__auto__ = cljs.core.async.chan.call(null,(1));
+cljs.core.async.impl.dispatch.run.call(null,((function (c__33665__auto__){
 return (function (){
-var f__33729__auto__ = (function (){var switch__33334__auto__ = ((function (c__33728__auto__){
-return (function (state_54335){
-var state_val_54336 = (state_54335[(1)]);
-if((state_val_54336 === (1))){
-var inst_54320 = [new cljs.core.Keyword(null,"token","token",-1211463215)];
-var inst_54321 = [token];
-var inst_54322 = cljs.core.PersistentHashMap.fromArrays(inst_54320,inst_54321);
-var inst_54323 = worker.slack.request.call(null,"auth.test",inst_54322);
-var state_54335__$1 = state_54335;
-return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null,state_54335__$1,(2),inst_54323);
+var f__33666__auto__ = (function (){var switch__33280__auto__ = ((function (c__33665__auto__){
+return (function (state_43055){
+var state_val_43056 = (state_43055[(1)]);
+if((state_val_43056 === (1))){
+var inst_43040 = [new cljs.core.Keyword(null,"token","token",-1211463215)];
+var inst_43041 = [token];
+var inst_43042 = cljs.core.PersistentHashMap.fromArrays(inst_43040,inst_43041);
+var inst_43043 = worker.slack.request.call(null,"auth.test",inst_43042);
+var state_43055__$1 = state_43055;
+return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null,state_43055__$1,(2),inst_43043);
 } else {
-if((state_val_54336 === (2))){
-var inst_54325 = (state_54335[(2)]);
-var inst_54326 = cljs.core.PersistentVector.EMPTY_NODE;
-var inst_54327 = [new cljs.core.Keyword(null,"body","body",-2049205669),new cljs.core.Keyword(null,"user_id","user_id",993497112)];
-var inst_54328 = (new cljs.core.PersistentVector(null,2,(5),inst_54326,inst_54327,null));
-var inst_54329 = cljs.core.get_in.call(null,inst_54325,inst_54328);
-var inst_54330 = [new cljs.core.Keyword(null,"token","token",-1211463215),new cljs.core.Keyword(null,"channel","channel",734187692),new cljs.core.Keyword(null,"as_user","as_user",854393931),new cljs.core.Keyword(null,"icon_emoji","icon_emoji",106950163),new cljs.core.Keyword(null,"text","text",-1790561697)];
-var inst_54331 = [token,inst_54329,false,":tomato:","Pom complete! Time to take a break :sweat_smile:"];
-var inst_54332 = cljs.core.PersistentHashMap.fromArrays(inst_54330,inst_54331);
-var inst_54333 = worker.slack.request.call(null,"chat.postMessage",inst_54332);
-var state_54335__$1 = state_54335;
-return cljs.core.async.impl.ioc_helpers.return_chan.call(null,state_54335__$1,inst_54333);
+if((state_val_43056 === (2))){
+var inst_43045 = (state_43055[(2)]);
+var inst_43046 = cljs.core.PersistentVector.EMPTY_NODE;
+var inst_43047 = [new cljs.core.Keyword(null,"body","body",-2049205669),new cljs.core.Keyword(null,"user_id","user_id",993497112)];
+var inst_43048 = (new cljs.core.PersistentVector(null,2,(5),inst_43046,inst_43047,null));
+var inst_43049 = cljs.core.get_in.call(null,inst_43045,inst_43048);
+var inst_43050 = [new cljs.core.Keyword(null,"token","token",-1211463215),new cljs.core.Keyword(null,"channel","channel",734187692),new cljs.core.Keyword(null,"as_user","as_user",854393931),new cljs.core.Keyword(null,"icon_emoji","icon_emoji",106950163),new cljs.core.Keyword(null,"text","text",-1790561697)];
+var inst_43051 = [token,inst_43049,false,":tomato:","Pom complete! Time to take a break :sweat_smile:"];
+var inst_43052 = cljs.core.PersistentHashMap.fromArrays(inst_43050,inst_43051);
+var inst_43053 = worker.slack.request.call(null,"chat.postMessage",inst_43052);
+var state_43055__$1 = state_43055;
+return cljs.core.async.impl.ioc_helpers.return_chan.call(null,state_43055__$1,inst_43053);
 } else {
 return null;
 }
 }
-});})(c__33728__auto__))
+});})(c__33665__auto__))
 ;
-return ((function (switch__33334__auto__,c__33728__auto__){
+return ((function (switch__33280__auto__,c__33665__auto__){
 return (function() {
-var worker$slack$notify_$_state_machine__33335__auto__ = null;
-var worker$slack$notify_$_state_machine__33335__auto____0 = (function (){
-var statearr_54337 = [null,null,null,null,null,null,null];
-(statearr_54337[(0)] = worker$slack$notify_$_state_machine__33335__auto__);
+var worker$slack$notify_$_state_machine__33281__auto__ = null;
+var worker$slack$notify_$_state_machine__33281__auto____0 = (function (){
+var statearr_43057 = [null,null,null,null,null,null,null];
+(statearr_43057[(0)] = worker$slack$notify_$_state_machine__33281__auto__);
 
-(statearr_54337[(1)] = (1));
+(statearr_43057[(1)] = (1));
 
-return statearr_54337;
+return statearr_43057;
 });
-var worker$slack$notify_$_state_machine__33335__auto____1 = (function (state_54335){
+var worker$slack$notify_$_state_machine__33281__auto____1 = (function (state_43055){
 while(true){
-var ret_value__33336__auto__ = (function (){try{while(true){
-var result__33337__auto__ = switch__33334__auto__.call(null,state_54335);
-if(cljs.core.keyword_identical_QMARK_.call(null,result__33337__auto__,new cljs.core.Keyword(null,"recur","recur",-437573268))){
+var ret_value__33282__auto__ = (function (){try{while(true){
+var result__33283__auto__ = switch__33280__auto__.call(null,state_43055);
+if(cljs.core.keyword_identical_QMARK_.call(null,result__33283__auto__,new cljs.core.Keyword(null,"recur","recur",-437573268))){
 continue;
 } else {
-return result__33337__auto__;
+return result__33283__auto__;
 }
 break;
 }
-}catch (e54338){if((e54338 instanceof Object)){
-var ex__33338__auto__ = e54338;
-var statearr_54339_54341 = state_54335;
-(statearr_54339_54341[(5)] = ex__33338__auto__);
+}catch (e43058){if((e43058 instanceof Object)){
+var ex__33284__auto__ = e43058;
+var statearr_43059_43062 = state_43055;
+(statearr_43059_43062[(5)] = ex__33284__auto__);
 
 
-cljs.core.async.impl.ioc_helpers.process_exception.call(null,state_54335);
+cljs.core.async.impl.ioc_helpers.process_exception.call(null,state_43055);
 
 return new cljs.core.Keyword(null,"recur","recur",-437573268);
 } else {
-throw e54338;
+throw e43058;
 
 }
 }})();
-if(cljs.core.keyword_identical_QMARK_.call(null,ret_value__33336__auto__,new cljs.core.Keyword(null,"recur","recur",-437573268))){
-var G__54342 = state_54335;
-state_54335 = G__54342;
+if(cljs.core.keyword_identical_QMARK_.call(null,ret_value__33282__auto__,new cljs.core.Keyword(null,"recur","recur",-437573268))){
+var G__43063 = state_43055;
+state_43055 = G__43063;
 continue;
 } else {
-return ret_value__33336__auto__;
+return ret_value__33282__auto__;
 }
 break;
 }
 });
-worker$slack$notify_$_state_machine__33335__auto__ = function(state_54335){
+worker$slack$notify_$_state_machine__33281__auto__ = function(state_43055){
 switch(arguments.length){
 case 0:
-return worker$slack$notify_$_state_machine__33335__auto____0.call(this);
+return worker$slack$notify_$_state_machine__33281__auto____0.call(this);
 case 1:
-return worker$slack$notify_$_state_machine__33335__auto____1.call(this,state_54335);
+return worker$slack$notify_$_state_machine__33281__auto____1.call(this,state_43055);
 }
 throw(new Error('Invalid arity: ' + (arguments.length - 1)));
 };
-worker$slack$notify_$_state_machine__33335__auto__.cljs$core$IFn$_invoke$arity$0 = worker$slack$notify_$_state_machine__33335__auto____0;
-worker$slack$notify_$_state_machine__33335__auto__.cljs$core$IFn$_invoke$arity$1 = worker$slack$notify_$_state_machine__33335__auto____1;
-return worker$slack$notify_$_state_machine__33335__auto__;
+worker$slack$notify_$_state_machine__33281__auto__.cljs$core$IFn$_invoke$arity$0 = worker$slack$notify_$_state_machine__33281__auto____0;
+worker$slack$notify_$_state_machine__33281__auto__.cljs$core$IFn$_invoke$arity$1 = worker$slack$notify_$_state_machine__33281__auto____1;
+return worker$slack$notify_$_state_machine__33281__auto__;
 })()
-;})(switch__33334__auto__,c__33728__auto__))
+;})(switch__33280__auto__,c__33665__auto__))
 })();
-var state__33730__auto__ = (function (){var statearr_54340 = f__33729__auto__.call(null);
-(statearr_54340[(6)] = c__33728__auto__);
+var state__33667__auto__ = (function (){var statearr_43060 = f__33666__auto__.call(null);
+(statearr_43060[(6)] = c__33665__auto__);
 
-return statearr_54340;
+return statearr_43060;
 })();
-return cljs.core.async.impl.ioc_helpers.run_state_machine_wrapped.call(null,state__33730__auto__);
-});})(c__33728__auto__))
+return cljs.core.async.impl.ioc_helpers.run_state_machine_wrapped.call(null,state__33667__auto__);
+});})(c__33665__auto__))
 );
 
-return c__33728__auto__;
+return c__33665__auto__;
 }));
 });
 worker.slack.complete_pomodoro = cljs.core.juxt.call(null,worker.slack.stop_pomodoro,worker.slack.notify);
 
-//# sourceMappingURL=slack.js.map?rel=1510147137222
+//# sourceMappingURL=slack.js.map?rel=1510229223711

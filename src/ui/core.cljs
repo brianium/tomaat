@@ -1,6 +1,7 @@
 (ns ui.core
   "Houses application state and defines actions and the main application component"
   (:require [reagent.core :as reagent]
+            [goog.dom :refer [getElement]]
             [data.core :as data]
             [ui.worker :as worker]
             [ui.timer :refer [start-timer stop-timer]]
@@ -70,6 +71,6 @@
 (defn -main []
   (reagent/render
     [app]
-    (.-body js/document)))
+    (getElement "tomaat")))
 
 (set! *main-cli-fn* -main)

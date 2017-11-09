@@ -21,7 +21,7 @@ goog.addDependency("../reagent/core.js", ['reagent.core'], ['reagent.impl.util',
 goog.addDependency("../data/core.js", ['data.core'], ['cljs.core']);
 goog.addDependency("../ui/main.js", ['ui.main'], ['goog.string', 'cljs.core', 'goog.string.format']);
 goog.addDependency("../ui/settings.js", ['ui.settings'], ['cljs.core', 'ui.worker']);
-goog.addDependency("../ui/core.js", ['ui.core'], ['ui.config', 'ui.timer', 'reagent.core', 'data.core', 'cljs.core', 'ui.main', 'ui.worker', 'ui.settings']);
+goog.addDependency("../ui/core.js", ['ui.core'], ['goog.dom', 'ui.config', 'ui.timer', 'reagent.core', 'data.core', 'cljs.core', 'ui.main', 'ui.worker', 'ui.settings']);
 goog.addDependency("../cljs/core/async/impl/protocols.js", ['cljs.core.async.impl.protocols'], ['cljs.core']);
 goog.addDependency("../cljs/core/async/impl/buffers.js", ['cljs.core.async.impl.buffers'], ['cljs.core', 'cljs.core.async.impl.protocols']);
 goog.addDependency("../cljs/core/async/impl/dispatch.js", ['cljs.core.async.impl.dispatch'], ['cljs.core', 'cljs.core.async.impl.buffers', 'goog.async.nextTick']);
@@ -47,5 +47,5 @@ goog.addDependency("../figwheel/client/socket.js", ['figwheel.client.socket'], [
 goog.addDependency("../figwheel/client/heads_up.js", ['figwheel.client.heads_up'], ['goog.dom', 'goog.string', 'cljs.core', 'goog.dom.dataset', 'goog.object', 'cljs.core.async', 'cljs.pprint', 'figwheel.client.utils', 'figwheel.client.socket', 'clojure.string']);
 goog.addDependency("../figwheel/client.js", ['figwheel.client'], ['goog.userAgent.product', 'goog.Uri', 'cljs.core', 'goog.object', 'cljs.core.async', 'figwheel.client.file_reloading', 'figwheel.client.utils', 'cljs.repl', 'figwheel.client.heads_up', 'figwheel.client.socket', 'clojure.string', 'cljs.reader']);
 goog.addDependency("../figwheel/connect/build_ui_dev.js", ['figwheel.connect.build_ui_dev'], ['ui.core', 'cljs.core', 'figwheel.client', 'figwheel.client.utils']);
-goog.addDependency("../1AAAF63.js", ['cljs.nodejs'], ['cljs.core']);
+goog.addDependency("../F702472.js", ['cljs.nodejs'], ['cljs.core']);
 goog.addDependency("../DF0FC10.js", ['cljs.nodejscli'], ['cljs.core', 'cljs.nodejs']);

@@ -21,18 +21,19 @@
   :source-paths ["src"]
 
   :cljsbuild {:builds
-              [{:id           "electron"
+              [{:id           "main-dev"
                 :source-paths ["src/main"]
+                :figwheel     {:on-jsload "main.core/reload"}
                 :compiler     {:main           main.core
                                :output-to      "resources/main.js"
                                :output-dir     "resources/public/js/main-out"
-                               ;; anything other than simple seems to jack things up
-                               :optimizations  :simple
-                               :cache-analysis true
-                               :pretty-print   true
+                               :optimizations  :none
                                :install-deps   true
                                :target         :nodejs
-                               :npm-deps       {:electron "1.8.1"}}}
+                               :parallel-build true
+                               :source-map     true
+                               :npm-deps       {:electron "1.8.1"
+                                                :ws       "3.3.1"}}}
 
                {:id           "ui-dev"
                 :source-paths ["src/ui" "src/data"]

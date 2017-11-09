@@ -40,8 +40,8 @@ return cljs.core.reset_BANG_.call(null,worker.timer._STAR_interval,null);
  *   the watcher notifying the renderer process
  */
 worker.timer.stop = (function worker$timer$stop(var_args){
-var G__54346 = arguments.length;
-switch (G__54346) {
+var G__43108 = arguments.length;
+switch (G__43108) {
 case 0:
 return worker.timer.stop.cljs$core$IFn$_invoke$arity$0();
 
@@ -96,8 +96,8 @@ return null;
 worker.timer.start = (function worker$timer$start(event,id){
 var contents = worker.util.web_contents.call(null,id);
 cljs.core.add_watch.call(null,worker.timer._STAR_time,new cljs.core.Keyword(null,"time-changed","time-changed",-1355380253),((function (contents){
-return (function (p1__54349_SHARP_,p2__54350_SHARP_,p3__54351_SHARP_,p4__54348_SHARP_){
-return worker.timer.time_changed.call(null,contents,p4__54348_SHARP_);
+return (function (p1__43134_SHARP_,p2__43135_SHARP_,p3__43136_SHARP_,p4__43133_SHARP_){
+return worker.timer.time_changed.call(null,contents,p4__43133_SHARP_);
 });})(contents))
 );
 
@@ -108,4 +108,4 @@ return worker.timer.tick.call(null,worker.timer._STAR_time);
 ,(1000)));
 });
 
-//# sourceMappingURL=timer.js.map?rel=1510147137244
+//# sourceMappingURL=timer.js.map?rel=1510229223741

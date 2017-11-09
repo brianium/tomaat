@@ -4,6 +4,7 @@
     "create-react-class": "^15.6.2",
     "electron": "^1.8.1",
     "react": "^15.6.2",
-    "react-dom": "^15.6.2"
+    "react-dom": "^15.6.2",
+    "ws": "^3.3.1"
   }
 }

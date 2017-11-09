@@ -10,6 +10,9 @@
 (def stop
   (juxt timer/stop slack/stop-pomodoro))
 
-(on "start-timer" start)
-(on "stop-timer" stop)
-(on "update-settings" settings/update-settings)
+(defn -main []
+  (on "start-timer" start)
+  (on "stop-timer" stop)
+  (on "update-settings" settings/update-settings))
+
+(set! *main-cli-fn* -main)

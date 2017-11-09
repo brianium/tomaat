@@ -2,6 +2,7 @@
 goog.provide('ui.core');
 goog.require('cljs.core');
 goog.require('reagent.core');
+goog.require('goog.dom');
 goog.require('data.core');
 goog.require('ui.worker');
 goog.require('ui.timer');
@@ -41,8 +42,8 @@ cljs.core.swap_BANG_.call(null,ui.core._STAR_state,cljs.core.assoc_in,new cljs.c
 
 return ui.settings.update_setting.call(null,k,v);
 });
-ui.worker.on.call(null,"time-changed",(function (p1__54678_SHARP_,p2__54677_SHARP_){
-return cljs.core.swap_BANG_.call(null,ui.core._STAR_state,cljs.core.assoc,new cljs.core.Keyword(null,"time","time",1385887882),cljs.core.js__GT_clj.call(null,p2__54677_SHARP_));
+ui.worker.on.call(null,"time-changed",(function (p1__58532_SHARP_,p2__58531_SHARP_){
+return cljs.core.swap_BANG_.call(null,ui.core._STAR_state,cljs.core.assoc,new cljs.core.Keyword(null,"time","time",1385887882),cljs.core.js__GT_clj.call(null,p2__58531_SHARP_));
 }));
 ui.worker.on.call(null,"timer-complete",(function (){
 return cljs.core.swap_BANG_.call(null,ui.core._STAR_state,cljs.core.assoc,new cljs.core.Keyword(null,"started?","started?",-1301062863),false);
@@ -54,8 +55,8 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
 });
 ui.core.app = cljs.core.with_meta.call(null,ui.core.tomaat,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"component-did-mount","component-did-mount",-1126910518),cljs.core.swap_BANG_.call(null,ui.core._STAR_state,cljs.core.assoc,new cljs.core.Keyword(null,"data","data",-232669377),data.core.read.call(null))], null));
 ui.core._main = (function ui$core$_main(){
-return reagent.core.render.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [ui.core.app], null),document.body);
+return reagent.core.render.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [ui.core.app], null),goog.dom.getElement("tomaat"));
 });
 cljs.core._STAR_main_cli_fn_STAR_ = ui.core._main;
 
-//# sourceMappingURL=core.js.map?rel=1510147683358
+//# sourceMappingURL=core.js.map?rel=1510234151650
