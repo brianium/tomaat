@@ -35,6 +35,18 @@
                                :npm-deps       {:electron "1.8.1"
                                                 :ws       "3.3.1"}}}
 
+               {:id           "main"
+                :source-paths ["src/main"]
+                :compiler     {:main           main.core
+                               :optimizations  :simple
+                               :output-to      "resources/main.js"
+                               :install-deps   true
+                               :target         :nodejs
+                               :parallel-build true
+                               :process-shim   true
+                               :pretty-print   false
+                               :npm-deps       {:electron "1.8.1"}}}
+
                {:id           "ui-dev"
                 :source-paths ["src/ui" "src/data"]
                 :figwheel     true
@@ -52,6 +64,22 @@
                                                 :react-dom          "15.6.2"
                                                 :create-react-class "15.6.2"}}}
 
+               {:id           "ui"
+                :source-paths ["src/ui" "src/data"]
+                :compiler     {:main           ui.core
+                               :optimizations  :simple
+                               :output-to      "resources/public/js/ui.js"
+                               :install-deps   true
+                               :target         :nodejs
+                               :hashbang       false
+                               :parallel-build true
+                               :process-shim   true
+                               :pretty-print   false
+                               :npm-deps       {:electron           "1.8.1"
+                                                :react              "15.6.2"
+                                                :react-dom          "15.6.2"
+                                                :create-react-class "15.6.2"}}}
+
                {:id           "worker-dev"
                 :source-paths ["src/worker" "src/data"]
                 :figwheel     true
@@ -63,9 +91,23 @@
                                :hashbang       false
                                :target         :nodejs
                                :parallel-build true
+                               :npm-deps       {:electron "1.8.1"}}}
+
+               {:id           "worker"
+                :source-paths ["src/worker" "src/data"]
+                :compiler     {:main           worker.core
+                               :optimizations  :simple
+                               :output-to      "resources/public/js/worker.js"
+                               :install-deps   true
+                               :hashbang       false
+                               :process-shim   true
+                               :target         :nodejs
+                               :parallel-build true
+                               :pretty-print   false
                                :npm-deps       {:electron "1.8.1"}}}]}
 
-  :aliases {"electron" ["shell" "node_modules/.bin/electron" "resources/main.js"]}
+  :aliases {"electron" ["shell" "node_modules/.bin/electron" "resources/main.js"]
+            "build"    ["do" "clean" ["cljsbuild" "once" "main" "ui" "worker"]]}
 
   :figwheel {:css-dirs         ["resources/public/css"]
              :nrepl-port       7888

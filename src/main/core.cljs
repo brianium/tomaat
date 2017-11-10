@@ -12,10 +12,12 @@
   jack with live reloading, so this function will help us determine
   the url of the worker document based on environment"
   []
-  (.log js/console js/__dirname)
-  (->> (path/join js/__dirname "../../../" "index.html")
-       (path/resolve)
-       (str "file://")))
+  (let [env (.. js/process -env -NODE_ENV)]
+    (if (= env "production")
+      (str "file://" js/__dirname "/public/index.html")
+      (->> (path/join js/__dirname "../../../" "index.html")
+        (path/resolve)
+        (str "file://")))))
 
 (defn create-window []
   (reset! *main-window (BrowserWindow. #js {:width          300
