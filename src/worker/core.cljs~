@@ -1,3 +1,0 @@
-(ns worker.core
-  (:require [cljs.nodejs :as nodejs]
-            [electron :refer [ipcRenderer]]))

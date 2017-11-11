@@ -1,4 +1,4 @@
-(ns data.core
+(ns tomaat.data
   (:require [electron :refer [remote app]]
             [path :refer [join]]
             [fs :refer [writeFileSync readFileSync]]))

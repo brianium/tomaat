@@ -1,4 +1,4 @@
-(ns worker.electron
+(ns tomaat.worker.util
   (:require [electron :refer [remote ipcRenderer]]))
 
 (def BrowserWindow (.-BrowserWindow remote))
@@ -10,5 +10,7 @@
        (.fromId BrowserWindow)
        .-webContents))
 
-(defn on [event-name handler]
+(defn on
+  "Register an event handler with the electron ipcRenderer"
+  [event-name handler]
   (.on ipcRenderer event-name handler))
