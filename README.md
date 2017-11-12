@@ -30,6 +30,12 @@ $ lein start
 $ lein electron
 ```
 
+*Note*: figwheel requires the `ws` node module for node targets. I opted to install this globally:
+
+```
+$ npm install -g ws
+```
+
 ### Project structure
 All source files are under `src/tomaat`, and several build targets are laid out in `project.clj`. Tomaat follows
 a structure that allows for the main electron process, a renderer process, and a worker process.
