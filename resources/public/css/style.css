@@ -1,0 +1,225 @@
+/**
+ * Colors from https://coolors.co/d0db97-69b578-5eb1bf-fada5e-ff6666
+ * Font "Pacifico" and "Lato" from Google Fonts
+ */
+
+/**
+ * Font Faces
+ */
+@font-face {
+    font-family: 'Pacifico';
+    font-style: normal;
+    font-weight: 400;
+    src: url('Pacifico-Regular.ttf');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    src: url('Lato-Regular.ttf');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+/**
+ * Base Styles
+ */
+html {
+    height: 500px;
+    width: 300px;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    background-color: #D0DB97;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    color: #fff;
+    font-family: Lato;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+/**
+ * Component styles
+ */
+.button {
+    background-color: #5EB1BF;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 5px #46848F;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 18px;
+    text-transform: uppercase;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.6);
+    padding: 20px 5px;
+    position: relative;
+    width: 100%;
+}
+
+.button:focus {
+    outline: none;
+}
+
+.button:hover {
+    top: 3px;
+    box-shadow: 0 3px #46848F;
+}
+
+.button:active {
+    top: 5px;
+    box-shadow: 0 0 #46848F;
+}
+
+.form {
+    text-align: left;
+    width: 100%;
+}
+
+.form__label {
+    display: block;
+    font-variant: small-caps;
+    margin-bottom: 5px;
+}
+
+.form__toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.form__toggle .label__input {
+    position: absolute;
+    left: -9999px;
+}
+
+.form__toggle:before {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 25px;
+    border-radius: 20px;
+    background: #6bcadb;
+    position: absolute;
+    right: 0;
+}
+
+.form__toggle:after {
+    content: '';
+    cursor: pointer;
+    display: block;
+    width: 21px;
+    height: 21px;
+    border-radius: 100%;
+    background: #fff;
+    position:absolute;
+    right: 37px;
+    top: -1px;
+    transform: translateX(0);
+    transition: transform 200ms ease-in-out;
+}
+
+.form__toggle--checked:after {
+    transform: translateX(35px);
+}
+
+.form__input {
+    border: none;
+    border-radius: 4px;
+    color: #666;
+    display: block;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+}
+
+.form__input:disabled {
+    background-color: #ddd;
+}
+
+.header {
+    background: url('tomato.png') no-repeat top center / 60%;
+    display: flex;
+    align-items: center;
+    font-family: Pacifico;
+    font-size: 32px;
+    height: 190px;
+}
+
+.header__text {
+    margin: 0;
+    width: 100%;
+}
+
+.label {
+    margin-top: 20px;
+}
+
+.label__input {
+    margin-left: 15px;
+}
+
+.link {
+    background-color: transparent;
+    border: none;
+    color: #FADA5E;
+    cursor: pointer;
+    padding: 20px;
+    text-decoration: underline;
+    outline: none;
+}
+
+.container {
+    width: 300px;
+    height: 500px;
+    position: relative;
+    perspective: 400px;
+}
+
+.screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: translateZ(0);
+    transform-style: preserve-3d;
+    transition: transform 300ms linear;
+}
+
+.screen--flipped {
+    transform: rotateY(180deg);
+}
+
+.screen__state {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    will-change: transform;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+.screen__main {
+    background-color: #69B578;
+}
+
+.screen__config {
+    background-color: #46848F;
+    transform: rotateY(180deg);
+}
+
+.timer {
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 30px;
+}

@@ -1,0 +1,14 @@
+{
+  "name": "tomaat",
+  "version": "1.0.0",
+  "productName": "Tomaat",
+  "main": "resources/main.js",
+  "dependencies": {
+    "@cljs-oss/module-deps": "^1.1.1",
+    "create-react-class": "^15.6.2",
+    "electron": "^1.8.1",
+    "electron-default-menu": "^1.0.1",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2"
+  }
+}
