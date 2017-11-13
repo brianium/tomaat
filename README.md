@@ -58,3 +58,4 @@ $ make
 - [ ] add timer to tray
 - [ ] maybe play a sound on complete (useful if slack not configured)
 - [ ] test and build for other operating systems
+- [ ] get build size down (need to prune some node modules)
