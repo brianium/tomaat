@@ -56,5 +56,4 @@ $ make
 ## Todo
 - [ ] webview for fetching slack token
 - [ ] add timer to tray
-- [ ] maybe play a sound on complete (useful if slack not configured)
 - [ ] test and build for other operating systems

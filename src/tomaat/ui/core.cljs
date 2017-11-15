@@ -3,7 +3,7 @@
   (:require [reagent.core :as reagent]
             [goog.dom :refer [getElement]]
             [tomaat.data :as data]
-            [tomaat.util :refer [on-ipc]]
+            [tomaat.util :refer [on-ipc get-url]]
             [tomaat.ui.timer :refer [start-timer stop-timer]]
             [tomaat.ui.settings :as settings]
             [tomaat.ui.config :refer [config-screen]]
@@ -40,9 +40,17 @@
   (swap! *state assoc-in [:data k] v)
   (settings/update-setting k v))
 
+(defn timer-complete []
+  (let [data (:data @*state)]
+    (swap! *state assoc :started? false)
+    (when (:play-sound data)
+      (-> (get-url "musicbox.wav")
+          js/Audio.
+          .play))))
+
 ;;; Updates state based on messages from the worker process
 (on-ipc "time-changed" #(swap! *state assoc :time (js->clj %2)))
-(on-ipc "timer-complete" #(swap! *state assoc :started? false))
+(on-ipc "timer-complete" timer-complete)
 
 ;;; Application Component
 (defn tomaat []

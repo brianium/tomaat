@@ -2,6 +2,7 @@
   (:require [tomaat.util :refer [web-contents]]
             [tomaat.worker.slack :refer [complete-pomodoro]]))
 
+;;; 1500 seconds = 25 minutes
 (def timer-length 1500)
 (defonce *time (atom timer-length))
 (defonce *interval (atom nil))
