@@ -19,7 +19,7 @@
     :disabled  disabled?
     :on-change on-change}])
 
-(defn form [{:keys [disabled? update token slack-me]}]
+(defn form [{:keys [disabled? update token slack-me? play-sound?]}]
   [:form.form
    [:label.form__label {:htmlFor "user-token"} "Slack Token"]
    [token-input
@@ -27,23 +27,35 @@
      :update    update
      :token     token
      :on-change #(update :token (.. % -currentTarget -value))}]
+   
    [:label.form__label.label.form__toggle
     {:htmlFor "notify"
-     :class   (when slack-me "form__toggle--checked")}
+     :class   (when slack-me? "form__toggle--checked")}
     "Slack me when time is up"
     [toggle
      {:id        "notify"
       :disabled? disabled?
-      :checked?  slack-me
-      :on-change #(update :slack-me (.. % -currentTarget -checked))}]]])
+      :checked?  slack-me?
+      :on-change #(update :slack-me (.. % -currentTarget -checked))}]]
+   
+   [:label.form__label.label.form__toggle
+    {:htmlFor "play-sound"
+     :class   (when play-sound? "form__toggle--checked")}
+    "Play sound when time is up"
+    [toggle
+     {:id        "play-sound"
+      :disabled? disabled?
+      :checked?  play-sound?
+      :on-change #(update :play-sound (.. % -currentTarget -checked))}]]])
 
 (defn config-screen [{:keys [toggle started? update data]}]
   [:div.screen__config.screen__state
    [:h1 "Settings"]
-   [form {:disabled? started?
-          :update    update
-          :token     (get data :token "")
-          :slack-me  (get data :slack-me false)}]
+   [form {:disabled?   started?
+          :update      update
+          :token       (get data :token "")
+          :slack-me?   (get data :slack-me false)
+          :play-sound? (get data :play-sound false)}]
    [:button.link
     {:on-click toggle
      :type     "button"}
