@@ -1,7 +1,7 @@
 (ns tomaat.util
   "A namespace to hide interop details and electron use. Might be
   a library some day"
-  (:require [electron :refer [BrowserWindow remote app ipcRenderer]]
+  (:require [electron :refer [BrowserWindow remote app ipcRenderer ipcMain]]
             [path]
             [clojure.string :refer [includes?]]))
 
@@ -46,8 +46,21 @@
   (on app event-name handler))
 
 (defn on-ipc
+  "register ipc listener for renderer processes"
   [event-name handler]
   (on ipcRenderer event-name handler))
+
+(defn send-ipc
+  ([event-name data]
+   (.send ipcRenderer event-name data))
+  ([event-name]
+   (.send ipcRenderer event-name)))
+
+(defn on-ipc-main
+  "register ipc listener for main process - explicitly named as
+  it is the exception here"
+  [event-name handler]
+  (on ipcMain event-name handler))
 
 (defn quit []
   (.quit app))

@@ -13,6 +13,7 @@ are doing great things! Uses [reagent](http://reagent-project.github.io/) for th
 * Update Slack profile with tomato while pom is in progress
 * Send a Slack notification when pomodoro is complete
 * Play a sound when time is up (useful if Slack is not configured)
+* Timer visible in tray!
 
 Slack usage is optional, but if configured - your profile will be updated like so:
 
@@ -56,5 +57,4 @@ $ make
 
 ## Todo
 - [ ] webview for fetching slack token
-- [ ] add timer to tray
 - [ ] test and build for other operating systems

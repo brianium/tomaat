@@ -2,7 +2,8 @@
   (:require [cljs.nodejs :as nodejs]
             [electron :refer [app Menu shell]]
             [electron-default-menu]
-            [tomaat.util :as u]))
+            [tomaat.util :as u]
+            [tomaat.main.tray :as tray]))
 
 (nodejs/enable-util-print!)
 
@@ -38,6 +39,7 @@
 (defn -main []
   (u/on-app "ready" create-window)
   (u/on-app "window-all-closed" quit-app)
-  (u/on-app "activate" activate))
+  (u/on-app "activate" activate)
+  (tray/listen!))
 
 (set! *main-cli-fn* -main)

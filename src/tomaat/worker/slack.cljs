@@ -58,21 +58,28 @@
   ([event id]
    (stop-pomodoro)))
 
-(defn notify
+(defn post-notification
   "Notifies the user's slackbot channel that the pom is complete and it's time
   to take a break from all their labors."
+  [token]
+  (go (let [response (<! (request "auth.test" {:token token}))
+            user-id  (get-in response [:body :user_id])]
+        (request
+          "chat.postMessage"
+          {:token      token
+           :channel    user-id
+           :as_user    false
+           :icon_emoji ":tomato:"
+           :text       "Pom complete! Time to take a break :sweat_smile:"}))))
+
+(defn notify
+  "Notifies user via slackbot if configured to do so"
   []
-  (with-token
-    (fn [token]
-      (go (let [response (<! (request "auth.test" {:token token}))
-                user-id  (get-in response [:body :user_id])]
-            (request
-              "chat.postMessage"
-              {:token      token
-               :channel    user-id
-               :as_user    false
-               :icon_emoji ":tomato:"
-               :text       "Pom complete! Time to take a break :sweat_smile:"}))))))
+  (let [settings  (data/read)
+        token     (:token settings)
+        slack-me? (:slack-me settings)]
+    (when (and token slack-me?)
+      (post-notification token))))
 
 ;;; Completing a pomodoro involves stopping it and notifiying the user
 (def complete-pomodoro
