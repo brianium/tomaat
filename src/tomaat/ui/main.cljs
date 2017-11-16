@@ -1,7 +1,6 @@
 (ns tomaat.ui.main
   "Houses the main screen of Tomaat - that is the timer screen"
-  (:require [goog.string :as gstring]
-            goog.string.format))
+  (:require [tomaat.ui.timer :refer [time->string]]))
 
 (defn header []
   [:header.header
@@ -9,10 +8,7 @@
 
 (defn timer
   [time]
-  (->> time
-       (mapv #(gstring/format "%02d" %))
-       (interpose ":")
-       (into [:div.timer])))
+  [:div.timer (time->string time)])
 
 (defn button [{:keys [on-click]} & children]
   [:button.button

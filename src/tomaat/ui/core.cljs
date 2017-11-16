@@ -7,7 +7,8 @@
             [tomaat.ui.timer :refer [start-timer stop-timer]]
             [tomaat.ui.settings :as settings]
             [tomaat.ui.config :refer [config-screen]]
-            [tomaat.ui.main :refer [main-screen]]))
+            [tomaat.ui.main :refer [main-screen]]
+            [tomaat.ui.tray :as tray]))
 
 (enable-console-print!)
 
@@ -40,6 +41,12 @@
   (swap! *state assoc-in [:data k] v)
   (settings/update-setting k v))
 
+(defn time-changed
+  [event time]
+  (let [time-vec (js->clj time)]
+    (swap! *state assoc :time time-vec)
+    (tray/update! time-vec)))
+
 (defn timer-complete []
   (let [data (:data @*state)]
     (swap! *state assoc :started? false)
@@ -47,10 +54,6 @@
       (-> (get-url "musicbox.wav")
           js/Audio.
           .play))))
-
-;;; Updates state based on messages from the worker process
-(on-ipc "time-changed" #(swap! *state assoc :time (js->clj %2)))
-(on-ipc "timer-complete" timer-complete)
 
 ;;; Application Component
 (defn tomaat []
@@ -66,6 +69,7 @@
         :stop     stop
         :started? started?
         :time     (:time state)}]
+      
       [config-screen
        {:toggle   toggle-screen
         :started? started?
@@ -73,12 +77,14 @@
         :data     (:data state)}]]]))
 
 (def app (with-meta tomaat
-           {:component-did-mount (swap! *state assoc :data (data/read))}))
+           {:component-did-mount #(swap! *state assoc :data (data/read))}))
 
 ;;; Render Tomaat as node application
 (defn -main []
   (reagent/render
     [app]
-    (getElement "tomaat")))
+    (getElement "tomaat"))
+  (on-ipc "time-changed" time-changed)
+  (on-ipc "timer-complete" timer-complete))
 
 (set! *main-cli-fn* -main)
