@@ -110,9 +110,13 @@ body {
     width: 60px;
     height: 25px;
     border-radius: 20px;
-    background: #6bcadb;
+    background: #fff;
     position: absolute;
     right: 0;
+}
+
+.form__toggle--checked:before {
+    background: #6bcadb;
 }
 
 .form__toggle:after {
@@ -122,7 +126,7 @@ body {
     width: 21px;
     height: 21px;
     border-radius: 100%;
-    background: #fff;
+    background: #6bcadb;
     position:absolute;
     right: 37px;
     top: -1px;
@@ -131,6 +135,7 @@ body {
 }
 
 .form__toggle--checked:after {
+    background: #fff;
     transform: translateX(35px);
 }
 
