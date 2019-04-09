@@ -1,6 +1,6 @@
 {
   "name": "tomaat",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "productName": "Tomaat",
   "main": "resources/main.js",
   "dependencies": {
