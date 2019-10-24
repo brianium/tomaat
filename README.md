@@ -12,6 +12,7 @@ are doing great things! Uses [reagent](http://reagent-project.github.io/) for th
 * 25 minute pomodoro timer
 * Update Slack profile with tomato while pom is in progress
 * Send a Slack notification when pomodoro is complete
+* Pause Slack notifications while pomodoro is running
 * Play a sound when time is up (useful if Slack is not configured)
 * Timer visible in tray!
 

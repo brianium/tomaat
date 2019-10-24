@@ -19,7 +19,7 @@
     :disabled  disabled?
     :on-change on-change}])
 
-(defn form [{:keys [disabled? update token slack-me? play-sound?]}]
+(defn form [{:keys [disabled? update token slack-me? play-sound? dnd?]}]
   [:form.form
    [:label.form__label {:htmlFor "user-token"} "Slack Token"]
    [token-input
@@ -39,6 +39,16 @@
       :on-change #(update :slack-me (.. % -currentTarget -checked))}]]
    
    [:label.form__label.label.form__toggle
+    {:htmlFor "dnd"
+     :class   (when dnd? "form__toggle--checked")}
+    "Pause Slack notifications"
+    [toggle
+     {:id        "dnd"
+      :disabled? disabled?
+      :checked?  dnd?
+      :on-change #(update :dnd (.. % -currentTarget -checked))}]]
+
+   [:label.form__label.label.form__toggle
     {:htmlFor "play-sound"
      :class   (when play-sound? "form__toggle--checked")}
     "Play sound when time is up"
@@ -55,6 +65,7 @@
           :update      update
           :token       (get data :token "")
           :slack-me?   (get data :slack-me false)
+          :dnd?        (get data :dnd false)       
           :play-sound? (get data :play-sound false)}]
    [:button.link
     {:on-click toggle

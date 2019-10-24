@@ -36,6 +36,32 @@
     (when-let [token (:token settings)]
       (fn-request token))))
 
+(defn with-dnd
+  "Executes the given function if the dnd settingh has been stored"
+  [dnd-function]
+  (let [settings  (data/read)
+        token     (:token settings)
+        dnd?      (:dnd settings)]
+    (when (and token dnd?)
+      (dnd-function token))))
+
+(defn start-dnd
+  "Turns on Do Not Disturb mode for the user"
+  []
+  (with-dnd
+    #(request
+      "dnd.setSnooze"
+      {:num_minutes 25
+      :token %})))
+    
+(defn end-dnd
+  "Ends the user's Do Not Disturb session immediately"
+  []
+  (with-dnd
+    #(request
+      "dnd.endDnd"
+      {:token %})))
+
 (defn update-profile
   "Updates token user's profile with the given text and emoji"
   [text emoji]
@@ -49,12 +75,15 @@
 (defn start-pomodoro
   "Updates the token user's profile with pom text and a tomato!"
   [event id]
-  (update-profile "pom party" ":tomato:"))
+  (update-profile "pom party" ":tomato:")
+  (start-dnd))
+  
 
 (defn stop-pomodoro
   "Stopping the pomodoro clears the user profile of any pom related business"
   ([]
-   (update-profile "" ""))
+   (update-profile "" "")
+   (end-dnd))
   ([event id]
    (stop-pomodoro)))
 
