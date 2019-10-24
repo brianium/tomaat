@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := build
 
 install:
-	npm install
+	npm install --only=prod
 	npm install -g electron-packager
 
 compile:

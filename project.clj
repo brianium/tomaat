@@ -1,4 +1,4 @@
-(defproject tomaat "1.2.1"
+(defproject tomaat "1.3.0"
   :description "Pomodoro electron app written in ClojureScript"
   :url "http://github.com/brianium/tomaat"
   :license {:name "Eclipse Public License"
