@@ -22,6 +22,8 @@ Slack usage is optional, but if configured - your profile will be updated like s
   <img src="slack-screenshot.png?raw=true" alt="Slack with updated profile" />
 </p>
 
+Tomaat currently relies on [legacy-tokens](https://api.slack.com/custom-integrations/legacy-tokens) to facilitate a simple text field entry of a slack token. Some day when the sun goes out and Slack deprecates these, then we will look into building a view for authentication.
+
 ## Development
 Tomaat uses [lein-figwheel](https://github.com/bhauman/lein-figwheel) for hot reloading of *all*
 source files. Since Tomaat leverages electron apis across the board - all builds target `:nodejs`.
